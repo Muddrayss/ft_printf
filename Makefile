@@ -3,34 +3,42 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: egualand <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: egualand <egualand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/05 16:28:55 by egualand          #+#    #+#              #
-#    Updated: 2023/11/09 14:31:16 by egualand         ###   ########.fr        #
+#    Updated: 2023/11/11 14:03:13 by egualand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_printf.c ft_printf_utils.c ft_put/ft_putnbr_base.c
+FTPUT_DIR	=	ft_put/
+FTPUT		=	ft_putchar ft_putnbr_base ft_putnbr_uint ft_putnbr ft_putstr
 
-OBJS = $(SRCS:.c=.o)
+FTSTR_DIR	=	ft_str/
+FTSTR		=	ft_strlen
 
-INCLUDES = ./
+SRC_FILES	=	ft_printf ft_printf_utils
+SRC_FILES	+=	$(addprefix $(FTPUT_DIR),$(FTPUT))
+SRC_FILES	+=	$(addprefix $(FTSTR_DIR),$(FTSTR))
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
+SRCS 		= 	$(addsuffix .c, $(SRC_FILES))
+OBJS 		= 	$(SRCS:.c=.o)
 
-NAME = libftprintf.a
+INCLUDES 	= 	./
+
+CC 			= 	cc
+CFLAGS 		= 	-Wall -Wextra -Werror
+RM 			= 	rm -f
+
+NAME 		= 	libftprintf.a
 
 all: $(NAME)
 
-$(NAME): $(HEADER) $(OBJS)
-	$(CC) $(CFLAGS) -I $(INCLUDES) -c $(SRCS)
+$(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-main:
-	$(CC) $(SRCS) ft_printf.h main.c
+%.o: %.c
+	$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
@@ -40,4 +48,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

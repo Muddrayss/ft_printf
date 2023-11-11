@@ -1,11 +1,23 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egualand <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/11 15:00:49 by egualand          #+#    #+#             */
+/*   Updated: 2023/11/11 15:01:11 by egualand         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_strlen(const char *s)
+#include "../ft_printf.h"
+
+int	ft_strlen(const char *s)
 {
-  int i;
+	int	i;
 
-  i = 0;
-  while (s && s[i])
-    i++;
-  return (i);
+	i = 0;
+	while (s && s[i])
+		i++;
+	return (i);
 }

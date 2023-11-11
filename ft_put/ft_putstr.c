@@ -1,16 +1,28 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egualand <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/11 15:05:01 by egualand          #+#    #+#             */
+/*   Updated: 2023/11/11 15:06:21 by egualand         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_putstr(const char *s)
+#include "../ft_printf.h"
+
+int	ft_putstr(const char *s)
 {
-  int i;
+	int	i;
 
-  if (!s)
-    return ft_putstr("(null)");
-  i = 0;
-  while (s[i] != '\0')
-  {
-    ft_putchar(s[i]);
-    i++;
-  }
-  return (i);
+	if (!s)
+		return (ft_putstr("(null)"));
+	i = 0;
+	while (s[i] != '\0')
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
+	return (i);
 }
